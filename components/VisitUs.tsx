@@ -68,25 +68,24 @@ export default function VisitUs() {
             </div>
           </motion.div>
 
-          {/* Map Placeholder */}
-          <motion.a 
-            href="https://www.google.com/maps/place/Radni%C4%8Dkog+bataljona+33,+Kraljevo,+Serbia"
-            target="_blank"
-            rel="noopener noreferrer"
+          {/* Map */}
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="h-[400px] lg:h-auto min-h-[400px] bg-taupe/10 border border-ivory/10 flex items-center justify-center relative overflow-hidden group hover:border-caramel/50 transition-colors cursor-pointer"
+            className="h-[400px] lg:h-auto min-h-[400px] border border-ivory/10 overflow-hidden"
           >
-            {/* In a real app, embed Google Maps iframe here */}
-            <div className="absolute inset-0 bg-[url('https://picsum.photos/seed/map-texture/800/800')] opacity-20 grayscale mix-blend-overlay group-hover:opacity-30 transition-opacity" />
-            <div className="text-center z-10 p-6">
-              <MapPin className="w-12 h-12 text-caramel mx-auto mb-4 opacity-80 group-hover:scale-110 transition-transform" />
-              <p className="font-serif text-xl text-ivory tracking-wide">Mapa lokacije</p>
-              <p className="text-sm text-ivory/50 mt-2 font-light">Radničkog Bataljona 33, Kraljevo</p>
-            </div>
-          </motion.a>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d500!2d20.67599!3d43.7080009!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475701004407e8a7%3A0xc5bff6ae832f8500!2sLa+Bocca+Bar!5e0!3m2!1ssr!2srs!4v1"
+              width="100%"
+              height="100%"
+              style={{ border: 0, filter: 'grayscale(20%) contrast(1.05)' }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </motion.div>
 
         </div>
       </div>
