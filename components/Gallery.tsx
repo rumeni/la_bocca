@@ -43,7 +43,7 @@ export default function Gallery() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[250px]">
           {galleryImages.map((img, idx) => (
             <motion.div
-              key={idx}
+              key={img.src}
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}

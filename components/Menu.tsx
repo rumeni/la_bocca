@@ -111,7 +111,7 @@ export default function Menu() {
               </h3>
               <ul className="space-y-6">
                 {category.items.map((item, itemIdx) => (
-                  <li key={itemIdx} className="group">
+                  <li key={item.name} className="group">
                     <div className="flex items-baseline justify-between">
                       <span className="font-serif text-lg text-espresso group-hover:text-caramel transition-colors">
                         {item.name}

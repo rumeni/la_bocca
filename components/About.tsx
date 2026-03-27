@@ -66,8 +66,6 @@ export default function About() {
                 sizes="(max-width: 1024px) 60vw, 30vw"
               />
             </div>
-            {/* Decorative element */}
-            <div className="absolute top-1/2 left-1/4 w-32 h-32 border border-caramel rounded-full -z-10 transform -translate-x-1/2 -translate-y-1/2" />
           </motion.div>
 
         </div>

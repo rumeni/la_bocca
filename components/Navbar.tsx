@@ -5,6 +5,14 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X } from 'lucide-react';
 import Image from 'next/image';
 
+const navLinks = [
+  { name: 'Početna', href: '#home' },
+  { name: 'O nama', href: '#about' },
+  { name: 'Meni', href: '#menu' },
+  { name: 'Galerija', href: '#gallery' },
+  { name: 'Kontakt', href: '#contact' },
+];
+
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -16,14 +24,6 @@ export default function Navbar() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const navLinks = [
-    { name: 'Početna', href: '#home' },
-    { name: 'O nama', href: '#about' },
-    { name: 'Meni', href: '#menu' },
-    { name: 'Galerija', href: '#gallery' },
-    { name: 'Kontakt', href: '#contact' },
-  ];
 
   return (
     <nav
@@ -65,7 +65,7 @@ export default function Navbar() {
 
         {/* Mobile Menu Toggle */}
         <button
-          className={`md:hidden p-2 transition-colors duration-300 ${isScrolled ? 'text-espresso' : 'text-espresso'}`}
+          className="md:hidden p-2 transition-colors duration-300 text-espresso"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label="Toggle menu"
         >

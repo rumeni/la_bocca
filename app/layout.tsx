@@ -15,7 +15,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'La Bocca bar | Good coffee. Good people. Good mood.',
+  title: 'La Bocca bar',
   description: 'Mesto gde se dolazi bez povoda, a ostaje duze nego sto si planirao. Dobrodosli u La Bocca bar.',
 };
 
