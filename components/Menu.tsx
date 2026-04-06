@@ -100,7 +100,7 @@ export default function Menu() {
         </div>
 
         {/* Book */}
-        <div className="relative bg-ivory shadow-[0_8px_40px_rgba(44,30,22,0.12)] border border-espresso/5">
+        <div className="relative bg-ivory shadow-[0_8px_40px_rgba(44,30,22,0.12)] border border-espresso/5 flex flex-col flex-1 min-h-0">
 
           {/* Corner decorations */}
           <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-caramel/30" />
