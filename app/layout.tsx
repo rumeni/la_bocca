@@ -4,14 +4,16 @@ import './globals.css';
 
 const cormorant = Cormorant_Garamond({
   subsets: ['latin', 'latin-ext'],
-  weight: ['300', '400', '500', '600', '700'],
+  weight: ['400', '500', '600', '700'],
   style: ['normal', 'italic'],
   variable: '--font-cormorant',
+  display: 'swap',
 });
 
 const inter = Inter({
   subsets: ['latin', 'latin-ext'],
   variable: '--font-inter',
+  display: 'swap',
 });
 
 const siteUrl = 'https://laboccabar.rs'; // update this when you have your domain

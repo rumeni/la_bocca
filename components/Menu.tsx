@@ -79,7 +79,7 @@ export default function Menu() {
               <button
                 key={cat.title}
                 onClick={() => goTo(idx)}
-                className={`shrink-0 px-3 sm:px-4 py-2 text-xs tracking-widest uppercase font-sans border transition-all duration-200 ${
+                className={`shrink-0 px-3 sm:px-4 py-2 text-xs tracking-wide sm:tracking-widest uppercase font-sans border transition-all duration-200 ${
                   idx === currentPage
                     ? 'bg-espresso text-ivory border-espresso'
                     : 'bg-ivory/60 text-espresso/60 border-espresso/15 hover:border-espresso/40 hover:text-espresso'
@@ -122,7 +122,7 @@ export default function Menu() {
               >
                 <div className="flex items-center gap-4 mb-5">
                   <div className="w-6 h-px bg-caramel" />
-                  <h3 className="font-serif text-lg sm:text-2xl md:text-3xl text-espresso uppercase tracking-widest">
+                  <h3 className="font-serif text-base sm:text-2xl md:text-3xl text-espresso uppercase tracking-wide sm:tracking-widest">
                     {category.title}
                   </h3>
                   <div className="flex-grow h-px bg-caramel/30" />
