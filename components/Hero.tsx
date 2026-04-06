@@ -26,14 +26,14 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="w-24 h-24 md:w-32 md:h-32 rounded-full border-2 border-caramel/50 bg-espresso/80 backdrop-blur-sm flex items-center justify-center mb-8 relative overflow-hidden"
+          className="w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 rounded-full border-2 border-caramel/50 bg-espresso/80 backdrop-blur-sm flex items-center justify-center mb-6 md:mb-8 relative overflow-hidden"
         >
-          <Image 
-            src="/logo.png" 
-            alt="La Bocca Logo" 
-            fill 
+          <Image
+            src="/logo.png"
+            alt="La Bocca Logo"
+            fill
             className="object-cover scale-110 -translate-y-[2px]"
-            sizes="(max-width: 768px) 96px, 128px"
+            sizes="(max-width: 640px) 80px, (max-width: 768px) 96px, 128px"
           />
         </motion.div>
 
@@ -41,7 +41,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className="font-serif text-5xl md:text-7xl lg:text-8xl text-ivory mb-6 tracking-tight"
+          className="font-serif text-4xl sm:text-5xl md:text-7xl lg:text-8xl text-ivory mb-4 md:mb-6 tracking-tight"
         >
           La Bocca <span className="italic text-caramel font-light">bar</span>
         </motion.h1>
@@ -50,7 +50,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-          className="text-lg md:text-2xl text-ivory/90 font-light tracking-widest uppercase mb-12"
+          className="text-sm sm:text-lg md:text-2xl text-ivory/90 font-light tracking-widest uppercase mb-10 md:mb-12"
         >
           Good coffee. Good people. Good mood.
         </motion.p>
@@ -59,17 +59,17 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-          className="flex flex-col sm:flex-row gap-6"
+          className="flex flex-col sm:flex-row gap-4 sm:gap-6 w-full sm:w-auto"
         >
           <a
             href="#menu"
-            className="px-8 py-4 bg-caramel text-white text-sm tracking-widest uppercase hover:bg-copper transition-colors duration-300"
+            className="px-8 py-4 bg-caramel text-white text-sm tracking-widest uppercase hover:bg-copper transition-colors duration-300 text-center"
           >
             Pogledaj meni
           </a>
           <a
             href="#contact"
-            className="px-8 py-4 border border-ivory/50 text-ivory text-sm tracking-widest uppercase hover:bg-ivory hover:text-espresso transition-colors duration-300 backdrop-blur-sm"
+            className="px-8 py-4 border border-ivory/50 text-ivory text-sm tracking-widest uppercase hover:bg-ivory hover:text-espresso transition-colors duration-300 backdrop-blur-sm text-center"
           >
             Poseti nas
           </a>

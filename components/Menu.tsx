@@ -40,7 +40,7 @@ export default function Menu() {
       className="bg-taupe"
       style={{ height: 'calc(100dvh - 72px)', scrollMarginTop: '72px' }}
     >
-      <div className="h-full flex flex-col max-w-3xl mx-auto px-6 md:px-12 pt-6 pb-6">
+      <div className="h-full flex flex-col max-w-3xl mx-auto px-4 sm:px-6 md:px-12 pt-4 sm:pt-6 pb-4 sm:pb-6">
 
         {/* Header */}
         <div className="text-center mb-6 shrink-0">
@@ -79,7 +79,7 @@ export default function Menu() {
               <button
                 key={cat.title}
                 onClick={() => goTo(idx)}
-                className={`shrink-0 px-4 py-2 text-xs tracking-widest uppercase font-sans border transition-all duration-200 ${
+                className={`shrink-0 px-3 sm:px-4 py-2 text-xs tracking-widest uppercase font-sans border transition-all duration-200 ${
                   idx === currentPage
                     ? 'bg-espresso text-ivory border-espresso'
                     : 'bg-ivory/60 text-espresso/60 border-espresso/15 hover:border-espresso/40 hover:text-espresso'
@@ -109,7 +109,7 @@ export default function Menu() {
           <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-caramel/30" />
 
           {/* Scrollable content */}
-          <div className="flex-1 min-h-0 overflow-y-auto px-8 md:px-12 py-7 [scrollbar-width:thin]">
+          <div className="flex-1 min-h-0 overflow-y-auto px-4 sm:px-8 md:px-12 py-5 sm:py-7 [scrollbar-width:thin]">
             <AnimatePresence mode="wait" custom={direction}>
               <motion.div
                 key={currentPage}
@@ -122,7 +122,7 @@ export default function Menu() {
               >
                 <div className="flex items-center gap-4 mb-5">
                   <div className="w-6 h-px bg-caramel" />
-                  <h3 className="font-serif text-2xl md:text-3xl text-espresso uppercase tracking-widest">
+                  <h3 className="font-serif text-lg sm:text-2xl md:text-3xl text-espresso uppercase tracking-widest">
                     {category.title}
                   </h3>
                   <div className="flex-grow h-px bg-caramel/30" />
@@ -132,7 +132,7 @@ export default function Menu() {
                   {category.items.map((item, itemIdx) => (
                     <li key={`${item.name}-${itemIdx}`} className="group">
                       <div className="flex items-baseline justify-between">
-                        <span className="font-serif text-lg text-espresso group-hover:text-caramel transition-colors duration-200">
+                        <span className="font-serif text-base sm:text-lg text-espresso group-hover:text-caramel transition-colors duration-200">
                           {item.name}
                         </span>
                         <div className="flex-grow mx-4 border-b border-dotted border-espresso/25 relative top-[-5px]" />
@@ -153,14 +153,14 @@ export default function Menu() {
           </div>
 
           {/* Prev / Next — always pinned to bottom */}
-          <div className="shrink-0 flex items-center justify-between px-8 md:px-12 py-4 border-t border-espresso/8">
+          <div className="shrink-0 flex items-center justify-between px-4 sm:px-8 md:px-12 py-3 sm:py-4 border-t border-espresso/8">
             <button
               onClick={goPrev}
               disabled={currentPage === 0}
-              className="flex items-center gap-2 text-xs tracking-widest uppercase text-espresso/50 hover:text-caramel transition-colors duration-200 disabled:opacity-20 disabled:cursor-not-allowed"
+              className="flex items-center gap-1 sm:gap-2 text-xs tracking-widest uppercase text-espresso/50 hover:text-caramel transition-colors duration-200 disabled:opacity-20 disabled:cursor-not-allowed min-h-[44px] min-w-[44px]"
             >
               <ChevronLeft size={16} />
-              Prethodna
+              <span className="hidden sm:inline">Prethodna</span>
             </button>
 
             <span className="font-serif text-sm text-espresso/40 italic">
@@ -170,9 +170,9 @@ export default function Menu() {
             <button
               onClick={goNext}
               disabled={currentPage === menuData.length - 1}
-              className="flex items-center gap-2 text-xs tracking-widest uppercase text-espresso/50 hover:text-caramel transition-colors duration-200 disabled:opacity-20 disabled:cursor-not-allowed"
+              className="flex items-center gap-1 sm:gap-2 text-xs tracking-widest uppercase text-espresso/50 hover:text-caramel transition-colors duration-200 disabled:opacity-20 disabled:cursor-not-allowed min-h-[44px] min-w-[44px] justify-end"
             >
-              Sledeća
+              <span className="hidden sm:inline">Sledeća</span>
               <ChevronRight size={16} />
             </button>
           </div>
