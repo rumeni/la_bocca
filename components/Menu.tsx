@@ -1,14 +1,48 @@
 'use client';
 
-import { motion } from 'motion/react';
+import { useState, useRef } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { menuData } from '@/data/menu';
 
+const SCROLL_AMOUNT = 160;
+
 export default function Menu() {
+  const [currentPage, setCurrentPage] = useState(0);
+  const [direction, setDirection] = useState(1);
+  const tabsRef = useRef<HTMLDivElement>(null);
+
+  const goTo = (index: number) => {
+    if (index === currentPage) return;
+    setDirection(index > currentPage ? 1 : -1);
+    setCurrentPage(index);
+
+    // scroll the active tab into view
+    const tabs = tabsRef.current;
+    if (tabs) {
+      const activeTab = tabs.children[index] as HTMLElement;
+      activeTab?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    }
+  };
+
+  const goPrev = () => { if (currentPage > 0) goTo(currentPage - 1); };
+  const goNext = () => { if (currentPage < menuData.length - 1) goTo(currentPage + 1); };
+
+  const category = menuData[currentPage];
+
+  const variants = {
+    enter: (dir: number) => ({ opacity: 0, x: dir * 48 }),
+    center: { opacity: 1, x: 0 },
+    exit: (dir: number) => ({ opacity: 0, x: dir * -48 }),
+  };
+
   return (
     <section id="menu" className="py-24 md:py-32 bg-taupe relative">
-      <div className="max-w-6xl mx-auto px-6 md:px-12">
-        <div className="text-center mb-16 md:mb-24">
-          <motion.h2 
+      <div className="max-w-3xl mx-auto px-6 md:px-12">
+
+        {/* Header */}
+        <div className="text-center mb-12">
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -16,7 +50,7 @@ export default function Menu() {
           >
             Naš <span className="italic text-caramel">Meni</span>
           </motion.h2>
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -25,41 +59,125 @@ export default function Menu() {
           />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-16">
-          {menuData.map((category, catIdx) => (
-            <motion.div 
-              key={category.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: catIdx * 0.1 }}
-            >
-              <h3 className="font-serif text-2xl text-espresso mb-8 uppercase tracking-widest border-b border-espresso/10 pb-4">
-                {category.title}
-              </h3>
-              <ul className="space-y-6">
-                {category.items.map((item, itemIdx) => (
-                  <li key={item.name} className="group">
-                    <div className="flex items-baseline justify-between">
-                      <span className="font-serif text-lg text-espresso group-hover:text-caramel transition-colors">
-                        {item.name}
-                      </span>
-                      <div className="flex-grow mx-4 border-b border-dotted border-espresso/30 relative top-[-6px]" />
-                      <span className="font-sans text-sm font-medium text-espresso">
-                        {item.price} <span className="text-xs text-espresso/60">RSD</span>
-                      </span>
-                    </div>
-                    {item.description && (
-                      <p className="text-sm text-espresso/60 mt-1 font-light italic">
-                        {item.description}
-                      </p>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          ))}
+        {/* Category tabs */}
+        <div className="flex items-center gap-2 mb-6">
+          <button
+            onClick={() => tabsRef.current?.scrollBy({ left: -SCROLL_AMOUNT, behavior: 'smooth' })}
+            className="shrink-0 p-1.5 border border-espresso/15 text-espresso/50 hover:text-caramel hover:border-caramel/40 transition-colors duration-200"
+            aria-label="Skroluj tabove levo"
+          >
+            <ChevronLeft size={16} />
+          </button>
+
+          <div
+            ref={tabsRef}
+            className="flex overflow-x-auto gap-2 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          >
+            {menuData.map((cat, idx) => (
+              <button
+                key={cat.title}
+                onClick={() => goTo(idx)}
+                className={`shrink-0 px-4 py-2 text-xs tracking-widest uppercase font-sans border transition-all duration-200 ${
+                  idx === currentPage
+                    ? 'bg-espresso text-ivory border-espresso'
+                    : 'bg-ivory/60 text-espresso/60 border-espresso/15 hover:border-espresso/40 hover:text-espresso'
+                }`}
+              >
+                {cat.title}
+              </button>
+            ))}
+          </div>
+
+          <button
+            onClick={() => tabsRef.current?.scrollBy({ left: SCROLL_AMOUNT, behavior: 'smooth' })}
+            className="shrink-0 p-1.5 border border-espresso/15 text-espresso/50 hover:text-caramel hover:border-caramel/40 transition-colors duration-200"
+            aria-label="Skroluj tabove desno"
+          >
+            <ChevronRight size={16} />
+          </button>
         </div>
+
+        {/* Book */}
+        <div className="relative bg-ivory shadow-[0_8px_40px_rgba(44,30,22,0.12)] border border-espresso/5">
+
+          {/* Corner decoration */}
+          <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-caramel/30" />
+          <div className="absolute top-0 right-0 w-6 h-6 border-t-2 border-r-2 border-caramel/30" />
+          <div className="absolute bottom-0 left-0 w-6 h-6 border-b-2 border-l-2 border-caramel/30" />
+          <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-caramel/30" />
+
+          {/* Page content */}
+          <div className="overflow-hidden px-8 md:px-14 py-10 min-h-[420px]">
+            <AnimatePresence mode="wait" custom={direction}>
+              <motion.div
+                key={currentPage}
+                custom={direction}
+                variants={variants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{ duration: 0.15, ease: 'easeInOut' }}
+              >
+                {/* Category title */}
+                <div className="flex items-center gap-4 mb-8">
+                  <div className="w-6 h-px bg-caramel" />
+                  <h3 className="font-serif text-2xl md:text-3xl text-espresso uppercase tracking-widest">
+                    {category.title}
+                  </h3>
+                  <div className="flex-grow h-px bg-caramel/30" />
+                </div>
+
+                {/* Items */}
+                <ul className="space-y-5">
+                  {category.items.map((item, itemIdx) => (
+                    <li key={`${item.name}-${itemIdx}`} className="group">
+                      <div className="flex items-baseline justify-between">
+                        <span className="font-serif text-lg text-espresso group-hover:text-caramel transition-colors duration-200">
+                          {item.name}
+                        </span>
+                        <div className="flex-grow mx-4 border-b border-dotted border-espresso/25 relative top-[-5px]" />
+                        <span className="font-sans text-sm font-medium text-espresso shrink-0">
+                          {item.price} <span className="text-xs text-espresso/50">RSD</span>
+                        </span>
+                      </div>
+                      {item.description && (
+                        <p className="text-sm text-espresso/55 mt-0.5 font-light italic">
+                          {item.description}
+                        </p>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* Prev / Next buttons */}
+          <div className="flex items-center justify-between px-8 md:px-14 py-5 border-t border-espresso/8">
+            <button
+              onClick={goPrev}
+              disabled={currentPage === 0}
+              className="flex items-center gap-2 text-xs tracking-widest uppercase text-espresso/50 hover:text-caramel transition-colors duration-200 disabled:opacity-20 disabled:cursor-not-allowed"
+            >
+              <ChevronLeft size={16} />
+              Prethodna
+            </button>
+
+            <span className="font-serif text-sm text-espresso/40 italic">
+              {currentPage + 1} / {menuData.length}
+            </span>
+
+            <button
+              onClick={goNext}
+              disabled={currentPage === menuData.length - 1}
+              className="flex items-center gap-2 text-xs tracking-widest uppercase text-espresso/50 hover:text-caramel transition-colors duration-200 disabled:opacity-20 disabled:cursor-not-allowed"
+            >
+              Sledeća
+              <ChevronRight size={16} />
+            </button>
+          </div>
+        </div>
+
       </div>
     </section>
   );
