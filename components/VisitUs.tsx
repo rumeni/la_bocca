@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'motion/react';
-import { MapPin, Clock, Instagram, Phone } from 'lucide-react';
+import { MapPin, Clock, Instagram } from 'lucide-react';
 
 export default function VisitUs() {
   return (
@@ -42,13 +42,6 @@ export default function VisitUs() {
                 </div>
               </div>
 
-              <div className="flex items-start gap-4">
-                <Phone className="w-6 h-6 text-caramel shrink-0 mt-1" />
-                <div>
-                  <h4 className="font-serif text-xl mb-2 tracking-wide">Kontakt</h4>
-                  <p className="text-ivory/70 font-light">+381 60 123 4567</p>
-                </div>
-              </div>
             </div>
 
             <div className="mt-12 pt-12 border-t border-ivory/10">
@@ -74,6 +67,7 @@ export default function VisitUs() {
             className="h-[400px] lg:h-auto min-h-[400px] border border-ivory/10 overflow-hidden"
           >
             <iframe
+              title="Lokacija La Bocca bara na Google mapi"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d500!2d20.67599!3d43.7080009!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475701004407e8a7%3A0xc5bff6ae832f8500!2sLa+Bocca+Bar!5e0!3m2!1ssr!2srs!4v1"
               width="100%"
               height="100%"

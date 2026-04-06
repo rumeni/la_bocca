@@ -4,16 +4,16 @@ import { motion } from 'motion/react';
 import Image from 'next/image';
 
 const galleryImages = [
-  { src: "/3.png", alt: "Quote for strong women", className: "md:col-span-2 md:row-span-2" },
-  { src: "/2.png", alt: "Cappuccino", className: "md:col-span-1 md:row-span-1" },
-  { src: "/10.png", alt: "Colorful cocktails", className: "md:col-span-1 md:row-span-1" },
-  { src: "/8.png", alt: "Jack Daniels", className: "md:col-span-1 md:row-span-1" },
-  { src: "/4.png", alt: "Red drink with quote", className: "md:col-span-1 md:row-span-1" },
-  { src: "/5.png", alt: "Coffee with cream", className: "md:col-span-1 md:row-span-1" },
-  { src: "/6.png", alt: "Red cocktail", className: "md:col-span-1 md:row-span-1" },
-  { src: "/11.png", alt: "Coffee in black cup", className: "md:col-span-2 md:row-span-2" },
-  { src: "/12.png", alt: "Light red drink", className: "md:col-span-1 md:row-span-1" },
-  { src: "/14.png", alt: "Black cup", className: "md:col-span-1 md:row-span-1" },
+  { src: "/3.png", alt: "La Bocca bar enterijer — intimna atmosfera kafića", className: "md:col-span-2 md:row-span-2" },
+  { src: "/2.png", alt: "Cappuccino sa latte art ukrasom u La Bocca baru", className: "md:col-span-1 md:row-span-1" },
+  { src: "/10.png", alt: "Selekcija šarenih koktela pripremljenih u La Bocca baru", className: "md:col-span-1 md:row-span-1" },
+  { src: "/8.png", alt: "Premium viski serviran u La Bocca baru", className: "md:col-span-1 md:row-span-1" },
+  { src: "/4.png", alt: "Osvežavajući koktel u La Bocca baru", className: "md:col-span-1 md:row-span-1" },
+  { src: "/5.png", alt: "Kafa sa kremom — La Bocca signature napitak", className: "md:col-span-1 md:row-span-1" },
+  { src: "/6.png", alt: "Crveni koktel serviran u La Bocca baru", className: "md:col-span-1 md:row-span-1" },
+  { src: "/11.png", alt: "Espresso u La Bocca baru — pažljivo pripremljen", className: "md:col-span-2 md:row-span-2" },
+  { src: "/12.png", alt: "Letnji koktel u La Bocca baru", className: "md:col-span-1 md:row-span-1" },
+  { src: "/14.png", alt: "Kafa u La Bocca baru", className: "md:col-span-1 md:row-span-1" },
 ];
 
 export default function Gallery() {

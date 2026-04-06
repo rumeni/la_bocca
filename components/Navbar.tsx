@@ -27,6 +27,7 @@ export default function Navbar() {
 
   return (
     <nav
+      aria-label="Glavna navigacija"
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
         isScrolled ? 'bg-ivory/95 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-6'
       }`}
@@ -65,9 +66,10 @@ export default function Navbar() {
 
         {/* Mobile Menu Toggle */}
         <button
-          className="md:hidden p-2 transition-colors duration-300 text-espresso"
+          className={`md:hidden p-2 transition-colors duration-300 ${isScrolled ? 'text-espresso' : 'text-ivory'}`}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          aria-label="Toggle menu"
+          aria-label={isMobileMenuOpen ? 'Zatvori meni' : 'Otvori meni'}
+          aria-expanded={isMobileMenuOpen}
         >
           {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
