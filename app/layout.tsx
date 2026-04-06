@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
-import { Cormorant_Garamond, Inter } from 'next/font/google';
+import { Playfair_Display, Inter } from 'next/font/google';
 import './globals.css';
 
-const cormorant = Cormorant_Garamond({
+const playfair = Playfair_Display({
   subsets: ['latin', 'latin-ext'],
   weight: ['400', '500', '600', '700'],
   style: ['normal', 'italic'],
@@ -104,7 +104,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className={`${cormorant.variable} ${inter.variable} font-sans bg-ivory text-espresso antialiased selection:bg-caramel selection:text-white`} suppressHydrationWarning>
+      <body className={`${playfair.variable} ${inter.variable} font-sans bg-ivory text-espresso antialiased selection:bg-caramel selection:text-white`} suppressHydrationWarning>
         {children}
       </body>
     </html>
