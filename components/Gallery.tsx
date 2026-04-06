@@ -4,7 +4,7 @@ import { motion } from 'motion/react';
 import Image from 'next/image';
 
 const galleryImages = [
-  { src: "/3.jpg", alt: "La Bocca bar enterijer — intimna atmosfera kafića", className: "col-span-2 row-span-2" },
+  { src: "/3.jpg", alt: "La Bocca bar enterijer — intimna atmosfera kafića", className: "col-span-2 row-span-2", imgStyle: { objectPosition: 'center 25%' } },
   { src: "/2.jpg", alt: "Cappuccino sa latte art ukrasom u La Bocca baru", className: "" },
   { src: "/10.jpg", alt: "Selekcija šarenih koktela pripremljenih u La Bocca baru", className: "" },
   { src: "/8.jpg", alt: "Premium viski serviran u La Bocca baru", className: "" },
@@ -55,6 +55,7 @@ export default function Gallery() {
                 alt={img.alt}
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
+                style={img.imgStyle}
                 sizes="(max-width: 640px) 50vw, (max-width: 768px) 50vw, (max-width: 1200px) 25vw, 25vw"
               />
               <div className="absolute inset-0 bg-espresso/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
