@@ -4,14 +4,14 @@ import { motion } from 'motion/react';
 import Image from 'next/image';
 
 const galleryImages = [
-  { src: "/3.jpg", alt: "La Bocca bar enterijer — intimna atmosfera kafića", className: "col-span-2 md:col-span-2 md:row-span-2" },
+  { src: "/3.jpg", alt: "La Bocca bar enterijer — intimna atmosfera kafića", className: "col-span-2 row-span-2" },
   { src: "/2.jpg", alt: "Cappuccino sa latte art ukrasom u La Bocca baru", className: "" },
   { src: "/10.jpg", alt: "Selekcija šarenih koktela pripremljenih u La Bocca baru", className: "" },
   { src: "/8.jpg", alt: "Premium viski serviran u La Bocca baru", className: "" },
   { src: "/4.jpg", alt: "Osvežavajući koktel u La Bocca baru", className: "" },
   { src: "/5.jpg", alt: "Kafa sa kremom — La Bocca signature napitak", className: "" },
   { src: "/6.jpg", alt: "Crveni koktel serviran u La Bocca baru", className: "" },
-  { src: "/11.jpg", alt: "Espresso u La Bocca baru — pažljivo pripremljen", className: "col-span-2 md:col-span-2 md:row-span-2" },
+  { src: "/11.jpg", alt: "Espresso u La Bocca baru — pažljivo pripremljen", className: "col-span-2 row-span-2" },
   { src: "/12.jpg", alt: "Letnji koktel u La Bocca baru", className: "" },
   { src: "/14.jpg", alt: "Kafa u La Bocca baru", className: "" },
 ];
