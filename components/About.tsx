@@ -23,7 +23,7 @@ export default function About() {
 
             <div className="space-y-5 text-espresso/80 font-sans text-base sm:text-lg leading-relaxed">
               <p className="text-lg sm:text-xl md:text-2xl font-serif italic text-espresso leading-snug border-l-2 border-caramel pl-5 py-2">
-                "La Bocca bar je nastao iz jedne želje, da postoji mesto gde se dolazi bez povoda, a ostaje duže nego što si planirao. Mesto gde se razgovara, nazdravlja i uživa bez žurbe. Dobrodošli u La Bocca bar."
+                &ldquo;La Bocca bar je nastao iz jedne želje, da postoji mesto gde se dolazi bez povoda, a ostaje duže nego što si planirao. Mesto gde se razgovara, nazdravlja i uživa bez žurbe. Dobrodošli u La Bocca bar.&rdquo;
               </p>
 
               <p>
