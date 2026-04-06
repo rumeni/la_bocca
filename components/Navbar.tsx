@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { X } from 'lucide-react';
+
 import Image from 'next/image';
 
 const navLinks = [
@@ -53,7 +53,7 @@ export default function Navbar() {
               />
             </div>
             <span className={`font-serif text-xl tracking-wide transition-colors duration-300 ${
-              isScrolled ? 'text-espresso' : 'text-espresso md:text-ivory'
+              isScrolled ? 'text-espresso' : 'text-ivory'
             }`}>
               La Bocca
             </span>
@@ -77,7 +77,7 @@ export default function Navbar() {
           {/* Mobile Hamburger */}
           <button
             className={`md:hidden flex flex-col justify-center items-center w-10 h-10 gap-[6px] z-[60] relative transition-colors duration-300 ${
-              isMobileMenuOpen ? 'text-ivory' : isScrolled ? 'text-espresso' : 'text-espresso'
+              isMobileMenuOpen ? 'text-ivory' : isScrolled ? 'text-espresso' : 'text-ivory'
             }`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label={isMobileMenuOpen ? 'Zatvori meni' : 'Otvori meni'}
@@ -120,13 +120,6 @@ export default function Navbar() {
                 </div>
                 <span className="font-serif text-xl text-ivory tracking-wide">La Bocca</span>
               </a>
-              <button
-                onClick={() => setIsMobileMenuOpen(false)}
-                aria-label="Zatvori meni"
-                className="text-ivory/60 hover:text-ivory transition-colors p-1"
-              >
-                <X size={22} />
-              </button>
             </div>
 
             {/* Divider */}
@@ -142,11 +135,8 @@ export default function Navbar() {
                   initial={{ opacity: 0, x: -24 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.1 + i * 0.07, duration: 0.35 }}
-                  className="group flex items-center gap-4 py-4 border-b border-white/5"
+                  className="group py-4 border-b border-white/5"
                 >
-                  <span className="text-caramel/40 font-serif text-sm group-hover:text-caramel transition-colors duration-300">
-                    0{i + 1}
-                  </span>
                   <span className="font-serif text-3xl text-ivory/90 group-hover:text-caramel transition-colors duration-300 tracking-wide">
                     {link.name}
                   </span>
