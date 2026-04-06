@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-
 import Image from 'next/image';
 
 const navLinks = [
@@ -24,11 +23,7 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    if (isMobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
+    document.body.style.overflow = isMobileMenuOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
   }, [isMobileMenuOpen]);
 
@@ -36,11 +31,20 @@ export default function Navbar() {
     <>
       <nav
         aria-label="Glavna navigacija"
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 bg-ivory/95 backdrop-blur-md shadow-sm py-4 md:bg-transparent md:shadow-none md:backdrop-blur-none ${
-          isScrolled ? 'md:bg-ivory/95 md:backdrop-blur-md md:shadow-sm md:py-4' : 'md:bg-transparent md:py-6'
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
+          isMobileMenuOpen
+            ? 'bg-espresso py-5'
+            : isScrolled
+            ? 'bg-ivory/95 backdrop-blur-md shadow-sm py-4'
+            : 'bg-transparent py-5 md:py-6'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
+        {/* Desktop scrim — gradient ispod navbara kada je transparentan, samo na PC */}
+        {!isScrolled && (
+          <div className="absolute inset-0 hidden md:block bg-gradient-to-b from-espresso/50 to-transparent pointer-events-none" />
+        )}
+
+        <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center relative">
           {/* Logo */}
           <a href="#home" className="flex items-center gap-3 group">
             <div className="w-10 h-10 rounded-full overflow-hidden border border-caramel/30 relative transition-transform duration-500 group-hover:scale-105">
@@ -52,8 +56,8 @@ export default function Navbar() {
                 sizes="40px"
               />
             </div>
-            <span className={`font-serif text-xl tracking-wide transition-colors duration-300 text-espresso ${
-              isScrolled ? 'md:text-espresso' : 'md:text-ivory'
+            <span className={`font-serif text-xl tracking-wide transition-colors duration-300 ${
+              isMobileMenuOpen ? 'text-ivory' : isScrolled ? 'text-espresso' : 'text-ivory'
             }`}>
               La Bocca
             </span>
@@ -66,7 +70,7 @@ export default function Navbar() {
                 key={link.name}
                 href={link.href}
                 className={`text-sm tracking-widest uppercase transition-colors duration-300 hover:text-caramel ${
-                  isScrolled ? 'text-espresso/80' : 'text-ivory/90'
+                  isScrolled ? 'text-espresso/80' : 'text-ivory'
                 }`}
               >
                 {link.name}
@@ -77,7 +81,7 @@ export default function Navbar() {
           {/* Mobile Hamburger */}
           <button
             className={`md:hidden flex flex-col justify-center items-center w-10 h-10 gap-[6px] z-[60] relative transition-colors duration-300 ${
-              isMobileMenuOpen ? 'text-ivory' : isScrolled ? 'text-espresso md:text-espresso' : 'text-espresso md:text-ivory'
+              isMobileMenuOpen ? 'text-ivory' : isScrolled ? 'text-espresso' : 'text-ivory'
             }`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label={isMobileMenuOpen ? 'Zatvori meni' : 'Otvori meni'}
@@ -110,19 +114,9 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 md:hidden bg-espresso flex flex-col"
+            className="fixed inset-0 z-40 md:hidden bg-espresso flex flex-col pt-20"
           >
-            {/* Top bar with logo + close */}
-            <div className="flex items-center justify-between px-6 py-6">
-              <a href="#home" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full overflow-hidden border border-caramel/40 relative">
-                  <Image src="/logo.png" alt="La Bocca Logo" fill className="object-cover scale-110" sizes="40px" />
-                </div>
-                <span className="font-serif text-xl text-ivory tracking-wide">La Bocca</span>
-              </a>
-            </div>
-
-            {/* Divider */}
+            {/* Divider ispod navbara */}
             <div className="mx-6 h-px bg-caramel/20" />
 
             {/* Nav Links */}

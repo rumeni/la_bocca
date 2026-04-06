@@ -16,12 +16,15 @@ const inter = Inter({
   display: 'swap',
 });
 
-const siteUrl = 'https://laboccabar.rs'; // update this when you have your domain
+const siteUrl = 'https://labocca.rs';
 
 export const metadata: Metadata = {
   title: 'La Bocca bar',
   description: 'Mesto gde se dolazi bez povoda, a ostaje duže nego što si planirao. Dobrodošli u La Bocca bar.',
   metadataBase: new URL(siteUrl),
+  alternates: {
+    canonical: siteUrl,
+  },
   openGraph: {
     title: 'La Bocca bar',
     description: 'Mesto gde se dolazi bez povoda, a ostaje duže nego što si planirao. Dobrodošli u La Bocca bar.',
@@ -29,7 +32,7 @@ export const metadata: Metadata = {
     siteName: 'La Bocca bar',
     images: [
       {
-        url: '/og-image.jpg', // replace with a real 1200x630 photo of the bar
+        url: '/og-image.png',
         width: 1200,
         height: 630,
         alt: 'La Bocca bar — Kraljevo',
@@ -42,7 +45,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'La Bocca bar',
     description: 'Mesto gde se dolazi bez povoda, a ostaje duže nego što si planirao.',
-    images: ['/og-image.jpg'],
+    images: ['/og-image.png'],
   },
 };
 
@@ -52,7 +55,7 @@ const jsonLd = {
   name: 'La Bocca bar',
   description: 'Mesto gde se dolazi bez povoda, a ostaje duže nego što si planirao. Dobrodošli u La Bocca bar.',
   url: siteUrl,
-  image: `${siteUrl}/og-image.jpg`,
+  image: `${siteUrl}/og-image.png`,
   address: {
     '@type': 'PostalAddress',
     streetAddress: 'Radničkog Bataljona 33',

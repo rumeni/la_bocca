@@ -9,7 +9,7 @@ export default function Hero() {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 w-full h-full">
         <Image
-          src="/1.png"
+          src="/1.jpg"
           alt="La Bocca bar interior"
           fill
           className="object-cover object-center"

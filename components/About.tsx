@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 export default function About() {
   return (
-    <section id="about" className="py-20 md:py-32 bg-ivory relative scroll-mt-20 min-h-screen flex items-center">
+    <section id="about" className="py-20 md:py-32 bg-ivory relative scroll-mt-[72px] min-h-screen flex items-center">
       <div className="max-w-7xl mx-auto px-6 md:px-12 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
@@ -50,7 +50,7 @@ export default function About() {
           >
             <div className="absolute top-0 right-0 w-4/5 h-4/5 rounded-t-full overflow-hidden shadow-2xl">
               <Image
-                src="/7.png"
+                src="/7.jpg"
                 alt="Pouring coffee"
                 fill
                 className="object-cover"
@@ -59,7 +59,7 @@ export default function About() {
             </div>
             <div className="absolute bottom-0 left-0 w-3/5 h-3/5 border-4 sm:border-8 border-ivory shadow-xl overflow-hidden">
               <Image
-                src="/13.png"
+                src="/13.jpg"
                 alt="Cocktail preparation"
                 fill
                 className="object-cover"

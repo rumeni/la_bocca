@@ -5,6 +5,7 @@ import Menu from '@/components/Menu';
 import Gallery from '@/components/Gallery';
 import VisitUs from '@/components/VisitUs';
 import Footer from '@/components/Footer';
+import BackToTop from '@/components/BackToTop';
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <Gallery />
       <VisitUs />
       <Footer />
+      <BackToTop />
     </main>
   );
 }
