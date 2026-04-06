@@ -16,8 +16,6 @@ export default function Menu() {
     if (index === currentPage) return;
     setDirection(index > currentPage ? 1 : -1);
     setCurrentPage(index);
-
-    // scroll the active tab into view
     const tabs = tabsRef.current;
     if (tabs) {
       const activeTab = tabs.children[index] as HTMLElement;
@@ -37,16 +35,20 @@ export default function Menu() {
   };
 
   return (
-    <section id="menu" className="py-24 md:py-32 bg-taupe relative">
-      <div className="max-w-3xl mx-auto px-6 md:px-12">
+    <section
+      id="menu"
+      className="bg-taupe"
+      style={{ height: 'calc(100dvh - 72px)', scrollMarginTop: '72px' }}
+    >
+      <div className="h-full flex flex-col max-w-3xl mx-auto px-6 md:px-12 pt-6 pb-6">
 
         {/* Header */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-6 shrink-0">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-serif text-4xl md:text-5xl text-espresso mb-4"
+            className="font-serif text-4xl md:text-5xl text-espresso mb-3"
           >
             Naš <span className="italic text-caramel">Meni</span>
           </motion.h2>
@@ -60,7 +62,7 @@ export default function Menu() {
         </div>
 
         {/* Category tabs */}
-        <div className="flex items-center gap-2 mb-6">
+        <div className="flex items-center gap-2 mb-4 shrink-0">
           <button
             onClick={() => tabsRef.current?.scrollBy({ left: -SCROLL_AMOUNT, behavior: 'smooth' })}
             className="shrink-0 p-1.5 border border-espresso/15 text-espresso/50 hover:text-caramel hover:border-caramel/40 transition-colors duration-200"
@@ -100,14 +102,14 @@ export default function Menu() {
         {/* Book */}
         <div className="relative bg-ivory shadow-[0_8px_40px_rgba(44,30,22,0.12)] border border-espresso/5">
 
-          {/* Corner decoration */}
+          {/* Corner decorations */}
           <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-caramel/30" />
           <div className="absolute top-0 right-0 w-6 h-6 border-t-2 border-r-2 border-caramel/30" />
           <div className="absolute bottom-0 left-0 w-6 h-6 border-b-2 border-l-2 border-caramel/30" />
           <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-caramel/30" />
 
-          {/* Page content */}
-          <div className="overflow-hidden px-8 md:px-14 py-10 min-h-[420px]">
+          {/* Scrollable content */}
+          <div className="flex-1 min-h-0 overflow-y-auto px-8 md:px-12 py-7 [scrollbar-width:thin]">
             <AnimatePresence mode="wait" custom={direction}>
               <motion.div
                 key={currentPage}
@@ -118,8 +120,7 @@ export default function Menu() {
                 exit="exit"
                 transition={{ duration: 0.15, ease: 'easeInOut' }}
               >
-                {/* Category title */}
-                <div className="flex items-center gap-4 mb-8">
+                <div className="flex items-center gap-4 mb-5">
                   <div className="w-6 h-px bg-caramel" />
                   <h3 className="font-serif text-2xl md:text-3xl text-espresso uppercase tracking-widest">
                     {category.title}
@@ -127,8 +128,7 @@ export default function Menu() {
                   <div className="flex-grow h-px bg-caramel/30" />
                 </div>
 
-                {/* Items */}
-                <ul className="space-y-5">
+                <ul className="space-y-3">
                   {category.items.map((item, itemIdx) => (
                     <li key={`${item.name}-${itemIdx}`} className="group">
                       <div className="flex items-baseline justify-between">
@@ -152,8 +152,8 @@ export default function Menu() {
             </AnimatePresence>
           </div>
 
-          {/* Prev / Next buttons */}
-          <div className="flex items-center justify-between px-8 md:px-14 py-5 border-t border-espresso/8">
+          {/* Prev / Next — always pinned to bottom */}
+          <div className="shrink-0 flex items-center justify-between px-8 md:px-12 py-4 border-t border-espresso/8">
             <button
               onClick={goPrev}
               disabled={currentPage === 0}

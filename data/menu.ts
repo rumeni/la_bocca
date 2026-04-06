@@ -174,7 +174,7 @@ export const menuData: MenuCategory[] = [
     ],
   },
   {
-    title: "Vina — čaša",
+    title: "Vina - čaša",
     items: [
       { name: "Dremina Tamjanika", description: "0.15l", price: 450 },
       { name: "Dremina Chardonnay", description: "0.15l", price: 450 },

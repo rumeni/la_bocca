@@ -18,7 +18,7 @@ const galleryImages = [
 
 export default function Gallery() {
   return (
-    <section id="gallery" className="py-24 bg-ivory">
+    <section id="gallery" className="py-24 bg-ivory scroll-mt-20">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="text-center mb-16">
           <motion.h2 
